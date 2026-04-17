@@ -324,6 +324,214 @@
     cursor: pointer;
   }
 
+  /* Cynthia Recommendations Section */
+  .reco-section { margin-bottom: 40px; }
+  .reco-card {
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+    padding: 24px;
+    position: relative;
+  }
+  .reco-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .reco-tag {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+  .reco-tag-high { color: var(--red); border-color: var(--red); background: var(--red-bg); }
+  .reco-tag-med { color: var(--yellow); border-color: var(--yellow); background: var(--yellow-bg); }
+  .reco-tag-low { color: var(--green); border-color: var(--green); background: var(--green-bg); }
+  .reco-fix-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .reco-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .reco-body {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #404040;
+    font-weight: 400;
+  }
+  .reco-body strong { color: var(--text); font-weight: 600; }
+  .reco-impact {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  .reco-impact strong { color: var(--text); }
+  .reco-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 6px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .reco-cta:hover { opacity: 0.8; }
+  .reco-cta.executed {
+    background: var(--green);
+    pointer-events: none;
+  }
+
+  /* Cynthia Chat Widget */
+  .cynthia-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+  .cynthia-fab:hover { transform: scale(1.08); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+  .cynthia-fab.open { display: none; }
+
+  .cynthia-panel {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 420px;
+    max-height: 600px;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    z-index: 201;
+    display: none;
+    flex-direction: column;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .cynthia-panel.open { display: flex; }
+
+  .cynthia-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--accent);
+    color: #fff;
+  }
+  .cynthia-panel-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .cynthia-panel-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 0 4px;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+  }
+  .cynthia-panel-close:hover { opacity: 1; }
+
+  .cynthia-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 440px;
+  }
+  .cynthia-msg {
+    font-size: 12px;
+    line-height: 1.6;
+    padding: 10px 14px;
+    max-width: 88%;
+    font-weight: 400;
+  }
+  .cynthia-msg.bot {
+    background: #f5f5f5;
+    border: 1px solid var(--border);
+    align-self: flex-start;
+    color: var(--text);
+  }
+  .cynthia-msg.user {
+    background: var(--accent);
+    color: #fff;
+    align-self: flex-end;
+  }
+  .cynthia-msg .msg-sender {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .cynthia-msg.bot .msg-sender { color: var(--text-muted); }
+  .cynthia-msg.user .msg-sender { color: rgba(255,255,255,0.6); }
+  .cynthia-typing { color: var(--text-muted); font-style: italic; }
+
+  .cynthia-input-row {
+    display: flex;
+    border-top: 1px solid var(--border);
+  }
+  .cynthia-input {
+    flex: 1;
+    padding: 14px 20px;
+    border: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+  }
+  .cynthia-input::placeholder { color: #a3a3a3; }
+  .cynthia-send {
+    padding: 14px 20px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .cynthia-send:hover { opacity: 0.8; }
+
   /* Responsive */
   @media (max-width: 768px) {
     .header { padding: 16px 20px; }
@@ -370,6 +578,33 @@
     <div id="bucketContainer"></div>
   </div>
 
+  <!-- Cynthia's Recommendations -->
+  <div class="section reco-section">
+    <div class="section-title">Cynthia's Recommendations</div>
+    <div id="recoContainer"></div>
+  </div>
+
+</div>
+
+<!-- Cynthia Chat FAB -->
+<button class="cynthia-fab" id="cynthiaFab" onclick="toggleChat()">C</button>
+
+<!-- Cynthia Chat Panel -->
+<div class="cynthia-panel" id="cynthiaPanel">
+  <div class="cynthia-panel-header">
+    <span class="cynthia-panel-title">Ask Cynthia</span>
+    <button class="cynthia-panel-close" onclick="toggleChat()">&times;</button>
+  </div>
+  <div class="cynthia-messages" id="cynthiaMessages">
+    <div class="cynthia-msg bot">
+      <span class="msg-sender">Cynthia</span>
+      Hey! I've been looking at your data for this period. A few things stand out -- your Meta ROAS is trending down and your CAC is creeping up. Want me to dig into either of those? Or ask me anything about your dashboard.
+    </div>
+  </div>
+  <div class="cynthia-input-row">
+    <input class="cynthia-input" id="cynthiaInput" type="text" placeholder="Ask Cynthia anything..." onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="cynthia-send" onclick="sendChat()">Send</button>
+  </div>
 </div>
 
 <script>
@@ -1032,13 +1267,6 @@ function renderBuckets(d) {
   }).join("");
 }
 
-function render() {
-  const d = DATA[currentPeriod];
-  renderRevenue(d);
-  renderOKRs(d);
-  renderBuckets(d);
-}
-
 function toggleBucket(key) {
   document.querySelector(`[data-bucket="${key}"]`).classList.toggle("open");
 }
@@ -1050,6 +1278,160 @@ function updateKRStatus(oi, ki, val) {
   renderOKRs(DATA[currentPeriod]);
   // re-open the OKR that was open
   document.querySelector(`[data-okr="${oi}"]`).classList.add("open");
+}
+
+// ============ CYNTHIA RECOMMENDATIONS ============
+
+const RECOMMENDATIONS = [
+  {
+    fix: 1,
+    priority: "high",
+    title: "Kill underperforming Meta placements",
+    body: "Your <strong>Meta ROAS dropped to 3.6x</strong> this week, down from 3.7x last month. Audience Network and Facebook Feed right-column placements are dragging performance. <strong>Turn those off and reallocate that budget to Instagram Reels and Stories</strong>, which are driving nearly 2x the return of other placements.",
+    impact: "Estimated impact: <strong>+$1,200/mo in recovered ad spend</strong> with no loss in attributed revenue.",
+    category: "ads"
+  },
+  {
+    fix: 2,
+    priority: "high",
+    title: "Reduce CAC by tightening Google audience targeting",
+    body: "Your <strong>Cost Per Acquisition is $24.80</strong>, still above the $22 OKR target. Google is your best-performing channel at 4.2x ROAS, but broad match keywords are inflating spend. <strong>Switch to phrase match on your top 15 converters and pause anything with CPA above $30.</strong>",
+    impact: "Estimated impact: <strong>CAC drops to ~$21.50</strong> within 2 weeks based on current conversion patterns.",
+    category: "ads"
+  },
+  {
+    fix: 3,
+    priority: "med",
+    title: "Launch a win-back flow for email conversion rate",
+    body: "Email conversion rate <strong>dipped to 2.1%</strong> this week. Your open rates are healthy at 38.2%, so the list is engaged -- they're just not buying. <strong>Build a 3-email win-back sequence targeting subscribers who opened but didn't purchase in the last 30 days.</strong> Include a time-limited offer.",
+    impact: "Estimated impact: <strong>+0.3-0.5% conversion rate lift</strong>, translating to ~$1,800/mo in incremental email revenue.",
+    category: "email"
+  },
+  {
+    fix: 4,
+    priority: "med",
+    title: "Scale TikTok spend -- ROAS is climbing",
+    body: "TikTok ROAS hit <strong>2.8x this week, up from 2.3x last week</strong>. That's a meaningful jump. Your current TikTok spend is a fraction of Google and Meta. <strong>Increase TikTok daily budget by 20% and test 2-3 new UGC-style creatives</strong> to see if the trend holds at higher spend.",
+    impact: "Estimated impact: <strong>+$2,400/mo revenue</strong> if ROAS holds at 2.8x with 20% budget increase.",
+    category: "ads"
+  },
+  {
+    fix: 5,
+    priority: "low",
+    title: "Boost AOV with post-purchase upsell",
+    body: "AOV is <strong>$63.20, tracking below the $68 target</strong>. Your conversion rate is solid, so the opportunity is in basket size, not traffic. <strong>Add a post-purchase one-click upsell offering a complementary product at 15% off.</strong> Test on DTC orders first.",
+    impact: "Estimated impact: <strong>AOV increase to ~$66-68</strong> based on typical 15-20% upsell take rates.",
+    category: "sales"
+  },
+  {
+    fix: 6,
+    priority: "low",
+    title: "Reduce resolution time with auto-tagging in Gorgias",
+    body: "Average resolution time is <strong>4.2 hours, above the 4-hour OKR target</strong>. First response is fast at 22 min, so the bottleneck is in the back-and-forth. <strong>Set up auto-tagging rules to route shipping/tracking tickets to a macro-based auto-response</strong>, which typically accounts for 35-40% of ticket volume.",
+    impact: "Estimated impact: <strong>Resolution time drops to ~3.5 hours</strong> by eliminating manual handling of routine tickets.",
+    category: "cs"
+  }
+];
+
+function renderRecommendations() {
+  const c = document.getElementById("recoContainer");
+  c.innerHTML = RECOMMENDATIONS.map((r, i) => {
+    const tagClass = r.priority === "high" ? "reco-tag-high" : r.priority === "med" ? "reco-tag-med" : "reco-tag-low";
+    const tagLabel = r.priority === "high" ? "High Priority" : r.priority === "med" ? "Medium Priority" : "Quick Win";
+    return `
+    <div class="reco-card">
+      <div class="reco-header">
+        <div>
+          <div class="reco-fix-label">Fix ${r.fix}</div>
+          <div class="reco-title">${r.title}</div>
+        </div>
+        <span class="reco-tag ${tagClass}">${tagLabel}</span>
+      </div>
+      <div class="reco-body">${r.body}</div>
+      <div class="reco-impact">${r.impact}</div>
+      <button class="reco-cta" id="recoCta${i}" onclick="executeReco(${i})">Want me to execute this?</button>
+    </div>`;
+  }).join("");
+}
+
+function executeReco(i) {
+  const btn = document.getElementById(`recoCta${i}`);
+  btn.textContent = "Queued for execution";
+  btn.classList.add("executed");
+}
+
+// ============ CYNTHIA CHAT ============
+
+const CYNTHIA_RESPONSES = [
+  { match: /roas|ad spend|ads|meta|google|tiktok/i, response: "Looking at your ad data: Google is your strongest channel at 4.2x ROAS. Meta has been sliding -- down to 3.6x, mostly because of underperforming Audience Network placements. I'd recommend killing those placements and shifting that budget to your Google campaigns. TikTok is showing promise at 2.8x and climbing. Want me to put together a budget reallocation plan?" },
+  { match: /email|open rate|click|subscriber|klaviyo/i, response: "Your email metrics are mostly healthy -- 38.2% open rate is solid. The weak spot is conversion rate at 2.1%, which dipped this week. The list is engaged, they're just not converting. A win-back flow targeting openers who didn't purchase would be my first move. I can draft the flow structure if you want." },
+  { match: /sales|revenue|aov|order|convert/i, response: "Total sales are up 12.4% this week -- nice momentum. DTC is leading the charge at +14.2%. The main gap is AOV at $63.20, still below your $68 target. A post-purchase upsell could close that gap. Affiliate is the one channel trending down (-3.2%) -- might be worth auditing your top affiliate partners to see who's still driving quality traffic." },
+  { match: /social|instagram|linkedin|tiktok|follower|engagement/i, response: "Social is growing steadily across all platforms. Instagram +180 followers this week, TikTok +210 (your fastest growing). Engagement rate is strong at 4.2%. LinkedIn is the slowest grower -- if that's a priority, I'd suggest posting 3x/week with more personal/founder content, which tends to get 2-3x the engagement of brand posts on LinkedIn." },
+  { match: /customer|support|cs|gorgias|nps|csat|ticket|resolution/i, response: "Customer service is in good shape -- 91% CSAT and 22-min first response are both strong. The gap is resolution time at 4.2 hours (target is under 4). About 35-40% of tickets are typically shipping/tracking questions that can be auto-resolved with macros. Setting up auto-tagging in Gorgias would be the fastest win to get under 4 hours." },
+  { match: /okr|objective|key result|quarter|q2|target|goal/i, response: "Here's your OKR snapshot: Objective 1 (revenue scaling) is tracking well -- 42% to your $625K Q2 target. Biggest risk is AOV growth. Objective 2 (acquisition engine) has a red flag on CAC, currently at $24.80 vs the $22 target. That needs immediate attention on the paid side. Objective 3 (customer experience) is your strongest -- CSAT at 91% and first response at 22 min. Resolution time is the only yellow light." },
+  { match: /budget|reallocat|spend more|spend less|where should/i, response: "Based on current performance, here's what I'd do with your ad budget: Shift ~15% from Meta to Google (your best ROAS). Increase TikTok by 20% to test if the upward trend holds. Kill Audience Network placements entirely. Net effect: same total spend, but projected +0.3x improvement in blended ROAS. Want me to model the exact numbers?" },
+  { match: /what should|priorit|focus|most important|first/i, response: "If I had to pick the top 3 actions this week: (1) Kill underperforming Meta placements -- highest impact, lowest effort. (2) Tighten Google keyword matching to bring CAC under $22. (3) Launch an email win-back flow for the conversion rate dip. Those three moves alone could add ~$5K/mo in revenue or savings. Want me to break any of those down further?" },
+];
+
+function getCynthiaResponse(input) {
+  for (const r of CYNTHIA_RESPONSES) {
+    if (r.match.test(input)) return r.response;
+  }
+  return "Good question. Let me look at the data on that. Based on what I'm seeing across your KPIs this week, the biggest opportunities are in your ad spend allocation and email conversion rate. Could you be more specific about which area you'd like me to dig into? I can look at sales, ads, email, social, or customer service.";
+}
+
+function toggleChat() {
+  const panel = document.getElementById("cynthiaPanel");
+  const fab = document.getElementById("cynthiaFab");
+  const isOpen = panel.classList.contains("open");
+  panel.classList.toggle("open");
+  fab.classList.toggle("open");
+  if (!isOpen) {
+    document.getElementById("cynthiaInput").focus();
+  }
+}
+
+function addMessage(text, type) {
+  const container = document.getElementById("cynthiaMessages");
+  const msg = document.createElement("div");
+  msg.className = `cynthia-msg ${type}`;
+  const sender = type === "bot" ? "Cynthia" : "You";
+  msg.innerHTML = `<span class="msg-sender">${sender}</span>${text}`;
+  container.appendChild(msg);
+  container.scrollTop = container.scrollHeight;
+}
+
+function sendChat() {
+  const input = document.getElementById("cynthiaInput");
+  const text = input.value.trim();
+  if (!text) return;
+
+  addMessage(text, "user");
+  input.value = "";
+
+  // Show typing indicator
+  const container = document.getElementById("cynthiaMessages");
+  const typing = document.createElement("div");
+  typing.className = "cynthia-msg bot cynthia-typing";
+  typing.innerHTML = `<span class="msg-sender">Cynthia</span>Analyzing your data...`;
+  container.appendChild(typing);
+  container.scrollTop = container.scrollHeight;
+
+  // Simulate response delay
+  setTimeout(() => {
+    typing.remove();
+    addMessage(getCynthiaResponse(text), "bot");
+  }, 1200);
+}
+
+// ============ RENDER ALL ============
+
+function render() {
+  const d = DATA[currentPeriod];
+  renderRevenue(d);
+  renderOKRs(d);
+  renderBuckets(d);
+  renderRecommendations();
 }
 
 // Time period switching
