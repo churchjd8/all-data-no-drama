@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect | Joshua Dean Church</title>
+  <meta name="description" content="No funnel, no opt-in wall — just a door that's open.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/png" href="../images/logos/bolt-black.png">
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/"><img src="../images/logos/jdc-monogram-white.png" alt="JDC" class="nav-logo"></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/my-story">My Story</a></li>
+        <li><a href="/podcast">The Podcast</a></li>
+        <li><a href="/book">The Book</a></li>
+        <li><a href="/connect" class="nav-cta">Connect</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="fade-up" style="max-width:640px;">
+        <div class="page-label">Say Hello</div>
+        <h1>Connect</h1>
+        <p class="page-subtitle">No funnel, no opt-in wall&mdash;just a door that's open. Whether you want to collaborate, come to an event, or just say what's up.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Form -->
+        <div class="fade-up">
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/joshuadeanchurch@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New message from joshuadeanchurch.com">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://brand-site-kappa.vercel.app/connect">
+            <input type="text" name="_honey" style="display:none">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="you@email.com">
+            </div>
+            <div class="form-group">
+              <label for="subject">What's this about?</label>
+              <select id="subject" name="subject">
+                <option value="general">Just saying hey</option>
+                <option value="speaking">Speaking / Events</option>
+                <option value="consulting">Consulting / AI Strategy</option>
+                <option value="podcast">Podcast</option>
+                <option value="retreats">Retreats</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required placeholder="What's on your mind?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send It &rarr;</button>
+            <div class="form-success" id="formSuccess" style="display:none;">
+              <p>Got it. I'll be in touch.</p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Socials -->
+        <div class="fade-up">
+          <div class="sh">
+            <div class="sh-label">Find Me</div>
+            <h2>Socials</h2>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <a href="https://instagram.com/joshuadeanchurch" target="_blank" class="social-card-row">
+              <span class="social-card-name">Instagram</span>
+              <span class="social-card-handle">@joshuadeanchurch</span>
+            </a>
+            <a href="https://www.linkedin.com/in/joshchurch" target="_blank" class="social-card-row">
+              <span class="social-card-name">LinkedIn</span>
+              <span class="social-card-handle">Joshua Church</span>
+            </a>
+            <a href="https://www.youtube.com/@joshuadeanchurch" target="_blank" class="social-card-row">
+              <span class="social-card-name">YouTube</span>
+              <span class="social-card-handle">@joshuadeanchurch</span>
+            </a>
+            <a href="https://open.spotify.com/show/4HogJDGOuHx08jy6uRJH1m" target="_blank" class="social-card-row">
+              <span class="social-card-name">Spotify</span>
+              <span class="social-card-handle">Find The Others</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/"><img src="../images/logos/jdc-monogram-white.png" alt="JDC" class="footer-logo"></a>
+        <ul class="footer-links">
+          <li><a href="/my-story">My Story</a></li>
+          <li><a href="/podcast">The Podcast</a></li>
+          <li><a href="/book">The Book</a></li>
+          <li><a href="https://thecoastaltribe.com" target="_blank">Coastal Tribe</a></li>
+          <li><a href="https://cynthiaconcierge.com/" target="_blank">Trust The Process</a></li>
+          <li><a href="/connect">Connect</a></li>
+        </ul>
+      </div>
+      <div class="footer-copy">&copy; 2026 Joshua Dean Church. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+    document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+    const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Breadcrumbs | Joshua Dean Church</title>
+  <meta name="description" content="Building a Profitable Partnership with The Universe. A spiritual memoir and founder's journey.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/png" href="../images/logos/bolt-black.png">
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/"><img src="../images/logos/jdc-monogram-white.png" alt="JDC" class="nav-logo"></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/my-story">My Story</a></li>
+        <li><a href="/podcast">The Podcast</a></li>
+        <li><a href="/book">The Book</a></li>
+        <li><a href="/connect" class="nav-cta">Connect</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-split">
+        <div class="fade-up">
+          <div class="page-label">The Book</div>
+          <h1>Cosmic Breadcrumbs</h1>
+          <p class="page-subtitle">Building a Profitable Partnership with The Universe</p>
+          <div style="margin-top:32px; display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="https://amzn.to/4sMZF5p" target="_blank" class="btn btn-solar">Buy on Amazon &rarr;</a>
+            <a href="https://amzn.to/4sMZF5p" target="_blank" class="btn btn-outline">Listen on Audible</a>
+          </div>
+        </div>
+        <div class="fade-up">
+          <img src="../images/photos/cosmic-breadcrumbs-cover.jpg" alt="Cosmic Breadcrumbs by Joshua Dean Church" class="page-hero-img" style="aspect-ratio:auto; border-radius:var(--radius); max-width:380px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section alt">
+    <div class="container">
+      <div class="prose fade-up" style="max-width:720px; margin:0 auto;">
+        <p style="font-size:20px; color:var(--glacier); font-style:italic; margin-bottom:32px;">What if the life you're seeking is already seeking you?</p>
+
+        <p><strong>Cosmic Breadcrumbs</strong> is a spiritual memoir and founder's journey by Forbes 30 Under 30 entrepreneur Joshua Church.</p>
+
+        <p>After years of chronic pain that culminated in a life-altering health crisis, Joshua set out to heal his body and discover his purpose. What followed was not a straight line, but a quiet trail of signs, setbacks, and synchronicities&mdash;breadcrumbs that slowly revealed themselves as he learned how to listen.</p>
+
+        <p>That same path would guide him to build a $20 million company in under three years. And later, it would lead him through the collapse of the business, exposing what success alone could not teach.</p>
+
+        <blockquote>"A story about what happens when you follow the breadcrumbs instead of the plan."</blockquote>
+
+        <p>Part memoir, part manifesto, part love letter to anyone who's ever felt like they were meant for more but didn't have the language for it yet. <strong>Cosmic Breadcrumbs</strong> traces the through line between pain, purpose, and the cosmic breadcrumbs that connect them.</p>
+
+        <p>From a doctor telling a seventeen-year-old to pick up golf, to co-founding a company that would change an industry, to finishing an Ironman, to learning that the real intelligence was inside all along&mdash;this is the story of what happens when you stop trying to control life and start collaborating with it.</p>
+
+        <div style="margin-top:48px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="https://amzn.to/4sMZF5p" target="_blank" class="btn btn-solar">Buy on Amazon &rarr;</a>
+          <a href="https://amzn.to/4sMZF5p" target="_blank" class="btn btn-outline">Listen on Audible</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/"><img src="../images/logos/jdc-monogram-white.png" alt="JDC" class="footer-logo"></a>
+        <ul class="footer-links">
+          <li><a href="/my-story">My Story</a></li>
+          <li><a href="/podcast">The Podcast</a></li>
+          <li><a href="/book">The Book</a></li>
+          <li><a href="https://thecoastaltribe.com" target="_blank">Coastal Tribe</a></li>
+          <li><a href="https://cynthiaconcierge.com/" target="_blank">Trust The Process</a></li>
+          <li><a href="/connect">Connect</a></li>
+        </ul>
+      </div>
+      <div class="footer-copy">&copy; 2026 Joshua Dean Church. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+    document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+    const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
