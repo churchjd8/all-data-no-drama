@@ -3,7 +3,12 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/fto-group",
+      "source": "/ftogroup",
+      "destination": "/podcast#fto-group",
+      "statusCode": 302
+    },
+    {
+      "source": "/twylgroup",
       "destination": "/podcast#fto-group",
       "statusCode": 302
     }
