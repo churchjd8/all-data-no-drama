@@ -1,4 +1,11 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/fto-group",
+      "destination": "/podcast#fto-group",
+      "statusCode": 302
+    }
+  ]
 }
