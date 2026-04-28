@@ -1,6 +1,12 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/caroline-proposal",
+      "destination": "/proposals/caroline-gamble-higher-selfing.html"
+    }
+  ],
   "redirects": [
     {
       "source": "/ftogroup",
