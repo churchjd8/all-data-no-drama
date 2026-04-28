@@ -1,13 +1,12 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
+  "redirects": [
     {
       "source": "/caroline-proposal",
-      "destination": "/proposals/caroline-gamble-higher-selfing.html"
-    }
-  ],
-  "redirects": [
+      "destination": "/proposals/caroline-gamble-higher-selfing",
+      "statusCode": 302
+    },
     {
       "source": "/ftogroup",
       "destination": "/podcast#fto-group",
