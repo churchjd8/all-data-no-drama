@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hub & Spoke Architecture — Cynthia AI</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../images/logos/bolt-white.png">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #737373;
+      --border: #e5e5e5;
+      --surface: #f5f5f5;
+      --accent: #000000;
+      --green: #16a34a;
+      --green-bg: #dcfce7;
+      --green-text: #15803d;
+      --blue: #2563eb;
+      --blue-bg: #dbeafe;
+      --blue-text: #1d4ed8;
+      --amber: #d97706;
+      --amber-bg: #fef3c7;
+      --amber-text: #92400e;
+      --purple: #7170ff;
+      --purple-bg: #ede9fe;
+      --purple-text: #5b21b6;
+      --max-w: 880px;
+      --font: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* ---- COVER ---- */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cover-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .cover h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      max-width: 700px;
+    }
+    .cover-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    .cover-meta {
+      margin-top: 40px;
+      display: flex;
+      gap: 32px;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .cover-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--border);
+      margin: 40px auto 0;
+    }
+
+    /* ---- CONTENT ---- */
+    .content {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .sep {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 72px 0;
+    }
+
+    /* ---- SECTIONS ---- */
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .section-intro {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 32px;
+      max-width: 640px;
+    }
+
+    /* ---- CARDS ---- */
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      margin-bottom: 6px;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* ---- STATS GRID ---- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .stat {
+      background: var(--bg);
+      padding: 24px;
+    }
+    .stat-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .stat-value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .stat-value.green { color: var(--green); }
+    .stat-value.blue { color: var(--blue); }
+    .stat-value.purple { color: var(--purple); }
+
+    /* ---- TAGS ---- */
+    .tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    .tag.green { background: var(--green-bg); color: var(--green-text); }
+    .tag.blue { background: var(--blue-bg); color: var(--blue-text); }
+    .tag.amber { background: var(--amber-bg); color: var(--amber-text); }
+    .tag.purple { background: var(--purple-bg); color: var(--purple-text); }
+
+    /* ---- CALLOUT ---- */
+    .callout {
+      border-left: 3px solid var(--accent);
+      background: var(--surface);
+      padding: 20px 24px;
+      border-radius: 0 8px 8px 0;
+      margin: 24px 0;
+    }
+    .callout p {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    /* ---- DIAGRAM ---- */
+    .diagram {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px 24px;
+      margin: 32px 0;
+      text-align: center;
+      overflow-x: auto;
+    }
+    .diagram pre {
+      font-family: var(--font);
+      font-size: 12px;
+      line-height: 1.6;
+      display: inline-block;
+      text-align: left;
+    }
+
+    /* ---- TABLE ---- */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th {
+      text-align: left;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--accent);
+    }
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    tr:hover td {
+      background: #fafafa;
+    }
+
+    /* ---- CODE ---- */
+    .code-block {
+      background: #1a1a1a;
+      color: #e5e5e5;
+      border-radius: 8px;
+      padding: 20px 24px;
+      font-size: 12px;
+      line-height: 1.6;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+    .code-block code {
+      font-family: var(--font);
+    }
+    .code-comment { color: #737373; }
+    .code-dir { color: #7dd3fc; }
+    .code-file { color: #a5b4fc; }
+
+    /* ---- CHECKLIST ---- */
+    .checklist {
+      list-style: none;
+      margin: 16px 0;
+    }
+    .checklist li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 8px;
+      padding: 8px 0;
+      font-size: 13px;
+      align-items: start;
+    }
+    .checklist li::before {
+      content: '→';
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    /* ---- FLOW ---- */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 24px 0;
+    }
+    .flow-step {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .flow-num {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .flow-content {
+      padding: 4px 0 24px;
+    }
+    .flow-content h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .flow-content p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ---- LOOP DIAGRAM ---- */
+    .loop {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 24px 0;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .loop-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 6px;
+    }
+    .loop-arrow {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    /* ---- FADE IN ---- */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---- TL;DR ---- */
+    .tldr {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px;
+    }
+    .tldr ul {
+      list-style: none;
+      margin: 0;
+    }
+    .tldr li {
+      padding: 8px 0;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tldr li:last-child {
+      border-bottom: none;
+    }
+    .tldr li strong {
+      color: var(--text);
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 640px) {
+      .content { padding: 40px 16px; }
+      .cover { padding: 60px 16px; }
+      .cover-meta { flex-direction: column; gap: 8px; }
+      .sep { margin: 48px 0; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .loop { flex-direction: column; }
+      .loop-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <section class="cover">
+    <div class="cover-badge">Internal Architecture Document</div>
+    <h1>Hub & Spoke<br>Server Architecture</h1>
+    <p class="cover-sub">How we run isolated client environments powered by a shared agency brain that gets smarter with every engagement.</p>
+    <div class="cover-meta">
+      <span>Cynthia AI</span>
+      <span>May 2026</span>
+      <span>Joshua & Ricki</span>
+    </div>
+    <div class="cover-divider"></div>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- THE MODEL -->
+    <section class="fade-in">
+      <div class="section-label">The Model</div>
+      <h2>One brain. Isolated servers.</h2>
+      <p class="section-intro">Every client gets their own isolated server. One central hub holds everything that makes us us — templates, processes, voice profiles, env configs, and shared learnings. Each client server pulls from that hub automatically.</p>
+
+      <div class="callout">
+        <p>Think of it like a franchise model: the playbook lives at HQ, but each location runs independently.</p>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- WHY SEPARATE -->
+    <section class="fade-in">
+      <div class="section-label">Why Separate Servers</div>
+      <h2>The case for isolation</h2>
+      <p class="section-intro">Five reasons we don't put everything on one server.</p>
+
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-label">Security</div>
+          <div class="stat-value green">Isolated</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Complexity</div>
+          <div class="stat-value green">Low</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Scale</div>
+          <div class="stat-value blue">Linear</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Hosting</div>
+          <div class="stat-value purple">Hetzner</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Security & Trust</h3>
+        <p>Client A's data never touches Client B's environment. No accidental leaks, no shared credentials, no crossed wires. If a client ever asks "who has access to our data?" — the answer is clean.</p>
+      </div>
+      <div class="card">
+        <h3>Simplicity</h3>
+        <p>Each server is self-contained. No complex folder permissions, no "make sure you're in the right directory." You open the client's server, everything in front of you is theirs.</p>
+      </div>
+      <div class="card">
+        <h3>Scalability</h3>
+        <p>Adding a new client = spinning up a new server. Removing a client = shutting one down. No untangling dependencies.</p>
+      </div>
+      <div class="card">
+        <h3>Parallel Work</h3>
+        <p>Joshua can be working on Jason's server while Ricki is building automations on CrossCourt's. No merge conflicts, no stepping on each other's toes.</p>
+      </div>
+      <div class="card">
+        <h3>Audit Trail</h3>
+        <p>Each server has its own git history. Every change is tracked per-client. Clean records if anyone ever needs to look back.</p>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- THE HUB -->
+    <section class="fade-in">
+      <div class="section-label">The Hub</div>
+      <h2>Our agency's brain</h2>
+      <p class="section-intro">A single git repo that holds everything shared across clients.</p>
+
+      <div class="code-block"><code><span class="code-dir">cynthia-agency-hub/</span>
+├── CLAUDE.md                          <span class="code-comment"># agency-wide AI instructions</span>
+├── .env.shared                        <span class="code-comment"># shared API keys</span>
+├── <span class="code-dir">memory/</span>
+│   ├── <span class="code-file">MEMORY.md</span>                      <span class="code-comment"># index</span>
+│   ├── <span class="code-file">voice_profile_joshua.md</span>        <span class="code-comment"># Joshua's writing voice</span>
+│   ├── <span class="code-file">agency_processes.md</span>            <span class="code-comment"># how we run engagements</span>
+│   └── <span class="code-file">agency_identity.md</span>             <span class="code-comment"># who we are, positioning</span>
+├── <span class="code-dir">templates/</span>
+│   ├── <span class="code-file">onboarding_checklist.md</span>        <span class="code-comment"># standard onboarding</span>
+│   ├── <span class="code-file">proposal_template.md</span>           <span class="code-comment"># base proposal structure</span>
+│   ├── <span class="code-file">discovery_questions.md</span>         <span class="code-comment"># intake questions</span>
+│   └── <span class="code-file">weekly_update_template.md</span>      <span class="code-comment"># client comms template</span>
+├── <span class="code-dir">scripts/</span>
+│   ├── <span class="code-file">spin-up-client.sh</span>              <span class="code-comment"># one command, new server</span>
+│   ├── <span class="code-file">sync-hub.sh</span>                    <span class="code-comment"># pull latest hub</span>
+│   └── <span class="code-file">install-tools.sh</span>               <span class="code-comment"># Claude Code, OpenCrawl</span>
+└── <span class="code-dir">playbooks/</span>
+    ├── <span class="code-file">ai_ops_audit.md</span>                <span class="code-comment"># AI ops assessment</span>
+    ├── <span class="code-file">website_build.md</span>               <span class="code-comment"># website playbook</span>
+    └── <span class="code-file">automation_build.md</span>            <span class="code-comment"># automation playbook</span></code></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Lives in the Hub</th>
+              <th>Never in the Hub</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Agency identity & voice profiles</td>
+              <td>Client-specific data</td>
+            </tr>
+            <tr>
+              <td>Process templates & playbooks</td>
+              <td>Client credentials or API keys</td>
+            </tr>
+            <tr>
+              <td>Shared environment variables</td>
+              <td>Client deliverables or content</td>
+            </tr>
+            <tr>
+              <td>Global learnings & feedback</td>
+              <td>Anything a client shouldn't see</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- THE SPOKES -->
+    <section class="fade-in">
+      <div class="section-label">The Spokes</div>
+      <h2>Client servers</h2>
+      <p class="section-intro">Each client server is its own workspace with a standard structure and a live link to the hub.</p>
+
+      <div class="code-block"><code><span class="code-dir">client-[name]/</span>
+├── CLAUDE.md                          <span class="code-comment"># client-specific instructions</span>
+├── .env                               <span class="code-comment"># client API keys & creds</span>
+├── <span class="code-dir">hub/</span>                               <span class="code-comment"># ← git submodule (auto-synced)</span>
+│   └── <span class="code-comment">(entire hub repo)</span>
+├── <span class="code-dir">memory/</span>
+│   ├── <span class="code-file">MEMORY.md</span>
+│   ├── <span class="code-file">client_voice_profile.md</span>        <span class="code-comment"># their brand voice</span>
+│   ├── <span class="code-file">client_context.md</span>              <span class="code-comment"># org, goals, stakeholders</span>
+│   └── <span class="code-file">project_notes.md</span>               <span class="code-comment"># ongoing project context</span>
+├── <span class="code-dir">deliverables/</span>
+│   └── <span class="code-comment">(whatever we're building)</span>
+└── <span class="code-dir">assets/</span>
+    └── <span class="code-comment">(brand assets, docs, etc.)</span></code></div>
+
+      <div class="callout">
+        <p>Each client's CLAUDE.md includes: <em>"Read from ./hub/ for agency-wide processes, templates, and voice profiles. Apply the agency playbook, then layer in this client's specific context."</em></p>
+      </div>
+
+      <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;">Claude Code on any client server automatically knows our full agency playbook AND the client's specific world.</p>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- ONBOARDING -->
+    <section class="fade-in">
+      <div class="section-label">Onboarding</div>
+      <h2>New client setup</h2>
+      <p class="section-intro">One command kicks off the entire setup when we sign a new client.</p>
+
+      <div class="code-block"><code>./spin-up-client.sh [client-name]</code></div>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-content">
+            <h4>Spin up the server</h4>
+            <p>Provisions a new Hetzner cloud environment for the client.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-content">
+            <h4>Install the toolchain</h4>
+            <p>Claude Code (AI operating layer), OpenCrawl (web scraping/auditing), and any other standard tools.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-content">
+            <h4>Clone the hub as a submodule</h4>
+            <p>Pulls in all agency templates, playbooks, voice profiles, and shared .env variables. Immediate operational context.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-content">
+            <h4>Scaffold the workspace</h4>
+            <p>Creates the standard folder structure (memory/, deliverables/, assets/), starter CLAUDE.md, and placeholder memory files.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">5</div>
+          <div class="flow-content">
+            <h4>Copy shared .env values</h4>
+            <p>API keys for our tools (Anthropic, Cynthia platform, etc.) get pulled from the hub automatically.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p>After the script runs, either of us can open that server from any computer and start working immediately. The client is fully operational within minutes, not hours.</p>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- SYNC -->
+    <section class="fade-in">
+      <div class="section-label">Sync</div>
+      <h2>How it stays in sync</h2>
+
+      <div class="card">
+        <div style="margin-bottom: 4px;">
+          <span class="tag green">Automatic</span>
+        </div>
+        <h3>Hub → Spoke</h3>
+        <p>Each time we open a client server or run sync-hub.sh, the latest hub gets pulled in. New templates, updated processes, fresh learnings — they flow to every client automatically.</p>
+      </div>
+
+      <div class="card">
+        <div style="margin-bottom: 4px;">
+          <span class="tag blue">Intentional</span>
+        </div>
+        <h3>Spoke → Hub</h3>
+        <p>When we learn something on a client project that applies universally, we deliberately push it to the hub. We curate what goes upstream — client-specific details never leak into the shared brain.</p>
+      </div>
+
+      <h3 style="margin-top: 32px; margin-bottom: 16px;">The Feedback Loop</h3>
+
+      <div class="loop">
+        <div class="loop-step">Client work generates learnings</div>
+        <span class="loop-arrow">→</span>
+        <div class="loop-step">Identify universal vs. specific</div>
+        <span class="loop-arrow">→</span>
+        <div class="loop-step">Push universal to hub</div>
+        <span class="loop-arrow">→</span>
+        <div class="loop-step">Hub syncs to all spokes</div>
+        <span class="loop-arrow">→</span>
+        <div class="loop-step">Every engagement benefits</div>
+        <span class="loop-arrow">↻</span>
+      </div>
+
+      <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;">This is how the agency gets smarter with every client. The hub is a living, evolving playbook — not a static template library.</p>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- ACCESS -->
+    <section class="fade-in">
+      <div class="section-label">Access</div>
+      <h2>Both of us, anywhere</h2>
+      <p class="section-intro">Cloud servers mean the server IS the source of truth — not our laptops.</p>
+
+      <ul class="checklist">
+        <li>Joshua can work from his laptop in San Diego</li>
+        <li>Ricki can work from his setup wherever he is</li>
+        <li>Both can work on the same client simultaneously if needed</li>
+        <li>All changes tracked via git — full history of who did what</li>
+        <li>Picking up where the other left off is seamless</li>
+        <li>Claude Code's memory persists on the server, not on local machines</li>
+      </ul>
+
+      <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;">No "can you send me that file?" No "which version is current?"</p>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- VISUAL -->
+    <section class="fade-in">
+      <div class="section-label">Architecture</div>
+      <h2>Visual overview</h2>
+
+      <div class="diagram">
+        <pre>
+                ┌─────────────────────┐
+                │                     │
+                │   CYNTHIA AGENCY    │
+                │       HUB           │
+                │                     │
+                │  templates/         │
+                │  playbooks/         │
+                │  voice profiles/    │
+                │  shared .env        │
+                │  global learnings   │
+                │  setup scripts      │
+                │                     │
+                └────────┬────────────┘
+                         │
+          ┌──────────────┼──────────────┐
+          │              │              │
+          ▼              ▼              ▼
+ ┌────────────┐  ┌────────────┐  ┌────────────┐
+ │  CLIENT A  │  │  CLIENT B  │  │  CLIENT C  │
+ │  Server    │  │  Server    │  │  Server    │
+ │            │  │            │  │            │
+ │  hub/ ←────│──│── synced ──│──│── from hub │
+ │  memory/   │  │  memory/   │  │  memory/   │
+ │  delivers/ │  │  delivers/ │  │  delivers/ │
+ │  .env      │  │  .env      │  │  .env      │
+ └────────────┘  └────────────┘  └────────────┘
+       ↕              ↕              ↕
+  Joshua OR       Joshua OR      Joshua OR
+   Ricki           Ricki          Ricki
+ (any computer)  (any computer) (any computer)
+        </pre>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- TLDR -->
+    <section class="fade-in">
+      <div class="section-label">Summary</div>
+      <h2>TL;DR</h2>
+
+      <div class="tldr">
+        <ul>
+          <li><strong>One hub</strong> = our agency brain (templates, processes, learnings, shared config)</li>
+          <li><strong>One server per client</strong> = isolated, secure, simple</li>
+          <li><strong>Hub syncs to all spokes</strong> = every client gets our latest and greatest</li>
+          <li><strong>Universal learnings flow back to hub</strong> = the agency gets smarter with every engagement</li>
+          <li><strong>One script to onboard</strong> = new client goes from signed to operational in minutes</li>
+          <li><strong>Either of us, any computer</strong> = Hetzner cloud servers mean location doesn't matter</li>
+        </ul>
+      </div>
+
+      <div class="callout" style="margin-top: 32px;">
+        <p>The architecture grows with us. Client #3 benefits from everything we learned on clients #1 and #2. Client #10 benefits from everything before it. <strong>The playbook compounds.</strong></p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
