@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nicole — Here's How I See It</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../images/logos/bolt-white.png">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #737373;
+      --border: #e5e5e5;
+      --surface: #f5f5f5;
+      --accent: #000000;
+      --green: #16a34a;
+      --green-bg: #dcfce7;
+      --green-text: #15803d;
+      --blue: #2563eb;
+      --blue-bg: #dbeafe;
+      --blue-text: #1d4ed8;
+      --amber: #d97706;
+      --amber-bg: #fef3c7;
+      --amber-text: #92400e;
+      --purple: #7170ff;
+      --purple-bg: #ede9fe;
+      --purple-text: #5b21b6;
+      --max-w: 880px;
+      --font: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* ---- COVER ---- */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cover-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .cover h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      max-width: 700px;
+    }
+    .cover-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    .cover-meta {
+      margin-top: 40px;
+      display: flex;
+      gap: 32px;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .cover-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--border);
+      margin: 40px auto 0;
+    }
+
+    /* ---- CONTENT ---- */
+    .content {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .sep {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 72px 0;
+    }
+
+    /* ---- SECTIONS ---- */
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .section-intro {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 32px;
+      max-width: 640px;
+    }
+
+    /* ---- CARDS ---- */
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      margin-bottom: 6px;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* ---- STATS GRID ---- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .stat {
+      background: var(--bg);
+      padding: 24px;
+    }
+    .stat-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .stat-value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .stat-value.green { color: var(--green); }
+    .stat-value.blue { color: var(--blue); }
+    .stat-value.purple { color: var(--purple); }
+    .stat-value.amber { color: var(--amber); }
+
+    /* ---- TAGS ---- */
+    .tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    .tag.green { background: var(--green-bg); color: var(--green-text); }
+    .tag.blue { background: var(--blue-bg); color: var(--blue-text); }
+    .tag.amber { background: var(--amber-bg); color: var(--amber-text); }
+    .tag.purple { background: var(--purple-bg); color: var(--purple-text); }
+
+    /* ---- CALLOUT ---- */
+    .callout {
+      border-left: 3px solid var(--accent);
+      background: var(--surface);
+      padding: 20px 24px;
+      border-radius: 0 8px 8px 0;
+      margin: 24px 0;
+    }
+    .callout p {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    /* ---- CHECKLIST ---- */
+    .checklist {
+      list-style: none;
+      margin: 16px 0;
+    }
+    .checklist li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 8px;
+      padding: 8px 0;
+      font-size: 13px;
+      align-items: start;
+    }
+    .checklist li::before {
+      content: '→';
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    /* ---- FLOW ---- */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 24px 0;
+    }
+    .flow-step {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .flow-num {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .flow-content {
+      padding: 4px 0 24px;
+    }
+    .flow-content h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .flow-content p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ---- PRICING BOX ---- */
+    .pricing {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    .pricing-amount {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .pricing-period {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .pricing ul {
+      list-style: none;
+      margin: 0;
+    }
+    .pricing li {
+      padding: 8px 0;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing li:last-child {
+      border-bottom: none;
+    }
+
+    /* ---- TL;DR ---- */
+    .tldr {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px;
+    }
+    .tldr ul {
+      list-style: none;
+      margin: 0;
+    }
+    .tldr li {
+      padding: 8px 0;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tldr li:last-child {
+      border-bottom: none;
+    }
+    .tldr li strong {
+      color: var(--text);
+    }
+
+    /* ---- FADE IN ---- */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---- SIGN OFF ---- */
+    .sign-off {
+      margin-top: 48px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .sign-off .name {
+      font-weight: 700;
+      font-size: 16px;
+      margin-top: 16px;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 640px) {
+      .content { padding: 40px 16px; }
+      .cover { padding: 60px 16px; }
+      .cover-meta { flex-direction: column; gap: 8px; }
+      .sep { margin: 48px 0; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <section class="cover">
+    <div class="cover-badge">Proposal</div>
+    <h1>Nicole &mdash;<br>Here's How I See It</h1>
+    <p class="cover-sub">A phased plan to get you an AI foundation across both businesses &mdash; starting with what moves the needle today.</p>
+    <div class="cover-meta">
+      <span>ARK Partners</span>
+      <span>May 2026</span>
+      <span>Joshua Church</span>
+    </div>
+    <div class="cover-divider"></div>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- WHAT I TOOK AWAY -->
+    <section class="fade-in">
+      <div class="section-label">Context</div>
+      <h2>What I took away</h2>
+      <p class="section-intro">After our call, a few things are really clear to me.</p>
+
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-label">SKUs</div>
+          <div class="stat-value">10,000</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Customers</div>
+          <div class="stat-value blue">1,400</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Employees</div>
+          <div class="stat-value purple">40</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">IG Followers</div>
+          <div class="stat-value green">40K+</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="margin-bottom: 4px;">
+          <span class="tag blue">Riding Supply International</span>
+        </div>
+        <h3>The beast</h3>
+        <p>You're holding the revenue operations org together &mdash; four CS reps, four sales reps, two key account managers, 1099 contractors in their own ecosystems, data living across NetSuite and Sage and Google Sheets. A fresh merger, an ERP migration that hasn't landed yet, and you're drowning in meetings doing the work of three people.</p>
+      </div>
+
+      <div class="card">
+        <div style="margin-bottom: 4px;">
+          <span class="tag green">The Detoxing Co</span>
+        </div>
+        <h3>The sleeping giant</h3>
+        <p>40K followers, a mold testing kit that did $100K last year with zero ad spend, 1,500 active Full Script profiles generating commission on autopilot, and a 2,000+ person email list you haven't even started working yet. You're about to take full ownership, rebrand, and relaunch &mdash; but you literally don't have the hours in the day.</p>
+      </div>
+
+      <div class="callout">
+        <p>Both of these are massive opportunities. But trying to solve everything at once is the wrong move, and you already know that. So here's how I'd sequence this.</p>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- PHASE 1 -->
+    <section class="fade-in">
+      <div class="section-label">Phase 1 &mdash; Start Now</div>
+      <h2>Your brain + your AI workflow</h2>
+      <p class="section-intro">No waiting on the ERP migration, no big build-out &mdash; two things that make your day-to-day meaningfully easier immediately.</p>
+
+      <div class="card">
+        <div style="margin-bottom: 4px;">
+          <span class="tag purple">MCP Brain</span>
+        </div>
+        <h3>Your personal server</h3>
+        <p>You told me a big frustration is having two separate ChatGPT accounts and still feeling like neither one really knows you. This fixes that completely.</p>
+        <p style="margin-top: 12px;">We build you a personal server &mdash; your own brain in the cloud. We load it with everything: your Riding Supply International SOPs, vendor contracts, customer data, The Detoxing Co brand assets, Full Script info, personal context &mdash; all of it. Then we connect that server directly to your Claude desktop app.</p>
+        <p style="margin-top: 12px;">Every time you open Claude, it already knows who you are, what you're working on, and the full context across both businesses and your personal life. No re-explaining. No switching accounts. One AI that knows everything.</p>
+      </div>
+
+      <div class="card">
+        <div style="margin-bottom: 4px;">
+          <span class="tag blue">AI Employee</span>
+        </div>
+        <h3>Cynthia in your Slack</h3>
+        <p>On top of the brain, you get your own AI assistant that lives in Slack. You talk to her like a team member &mdash; voice notes, text, whatever. She's connected to Google (Drive, Gmail, Calendar), Slack, and pulls from that same brain server. As NetSuite settles post-migration, we connect that too.</p>
+        <p style="margin-top: 12px;">Draft emails, analyze spreadsheets, prep for meetings, pull customer info, summarize contracts, negotiate terms prep, schedule coordination &mdash; all the stuff that's eating your hours right now. She handles it.</p>
+      </div>
+
+      <div class="card">
+        <div style="margin-bottom: 4px;">
+          <span class="tag green">Daily Intelligence</span>
+        </div>
+        <h3>Business analysis &amp; reporting</h3>
+        <p>Your AI is actively watching your numbers and surfacing what matters. Daily snapshots, revenue trends, customer activity, anomalies &mdash; delivered to you without you having to dig through spreadsheets or ask your team to build reports.</p>
+      </div>
+
+      <div class="callout">
+        <p>This is our rinse-and-repeat foundation for every client because the ROI is immediate and obvious. You'll start seeing things you didn't even know were possible once you're actually using it.</p>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- PHASE 2 -->
+    <section class="fade-in">
+      <div class="section-label">Phase 2 &mdash; Future</div>
+      <h2>The Detoxing Co relaunch</h2>
+      <p class="section-intro">Once Phase 1 is humming and you're seeing what's possible, this is the natural next move. There's so much low-hanging fruit here it's almost silly.</p>
+
+      <div class="card">
+        <div style="margin-bottom: 4px;">
+          <span class="tag amber">Analysis</span>
+        </div>
+        <h3>Business intelligence</h3>
+        <p>Send me your sales data exports (Squarespace + Full Script) and I'll run it through our AI analysis engine. We'll map your customer segments, buying patterns, revenue opportunities, and give you a clear picture of where the biggest levers are.</p>
+      </div>
+
+      <div class="card">
+        <div style="margin-bottom: 4px;">
+          <span class="tag green">Revenue</span>
+        </div>
+        <h3>Full Script email sequences</h3>
+        <p>You have 1,500 active profiles and a 2,000+ email list and you're not emailing them. That's free money. We can build AI-powered email sequences that go out on a rhythm &mdash; "Top supplements this month," seasonal protocols, restock reminders &mdash; and drive commission without you touching it.</p>
+      </div>
+
+      <div class="card">
+        <div style="margin-bottom: 4px;">
+          <span class="tag blue">Platform</span>
+        </div>
+        <h3>Website migration</h3>
+        <p>You mentioned wanting to move from Squarespace to Shopify. We can scope that and build it out quickly. A clean Shopify store optimized for the mold testing kit with proper upsells (the $100 consult add-on, Full Script link) could meaningfully change your conversion.</p>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- PHASE 3 -->
+    <section class="fade-in">
+      <div class="section-label">Phase 3 &mdash; After ERP Migration</div>
+      <h2>Custom CRM for Riding Supply International</h2>
+      <p class="section-intro">This is the big one, and you're right &mdash; it makes the most sense once the NetSuite migration is complete and you have one unified system. But I want you to know what's on the table.</p>
+
+      <ul class="checklist">
+        <li>A custom CRM built specifically for how your org actually works &mdash; W2 team, 1099 reps, key accounts, the whole structure</li>
+        <li>Touch point tracking with accountability (quarterly minimum contact, configurable per account tier)</li>
+        <li>Slack notifications to sales and CS reps when action is needed</li>
+        <li>Connected to NetSuite for real-time customer and order data</li>
+        <li>Connected to Google and Hiver so nothing lives in a silo</li>
+        <li>Dashboards your team actually wants to use &mdash; not PowerBI, not a NetSuite bolt-on</li>
+      </ul>
+
+      <div class="callout">
+        <p>This would have been a $100K+ build two years ago. With how we build now, it's a fraction of that in a fraction of the time. But it only makes sense once the ERP is merged and stable. So we'll revisit this when you're ready.</p>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- PARTNERSHIP -->
+    <section class="fade-in">
+      <div class="section-label">The Partnership</div>
+      <h2>How it works</h2>
+
+      <div class="pricing">
+        <div class="pricing-amount">$1,500/mo</div>
+        <div class="pricing-period">Your AI foundation &mdash; month to month, you own all your data</div>
+        <ul>
+          <li><strong>Personal brain server (MCP)</strong> loaded with your business context</li>
+          <li><strong>Cynthia in your Slack</strong> as your AI employee</li>
+          <li><strong>Daily business analysis &amp; reporting</strong> &mdash; your AI actively watching your numbers</li>
+          <li><strong>Ongoing maintenance, optimization &amp; support</strong></li>
+          <li><strong>Dedicated Slack channel</strong> with me and Ricki</li>
+        </ul>
+      </div>
+
+      <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;">From there, as you start to see what's possible and want to go deeper &mdash; the Detoxing Co relaunch, email automation, the Shopify build, eventually the CRM &mdash; we scope those projects together and price them based on what we're building. Some are one-time builds, some add to the monthly. You'll always know what you're paying for before we start, and nothing happens without you saying go.</p>
+
+      <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;">The relationship grows naturally as the scope grows. No pressure, no big upfront commitment. We deliver, you see the value, and we expand from there.</p>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- WHAT I NEED -->
+    <section class="fade-in">
+      <div class="section-label">Next Steps</div>
+      <h2>What I need from you</h2>
+      <p class="section-intro">Send whatever you have whenever you have it. No rush to get it all at once &mdash; we'll start building the brain as soon as the first pieces come in.</p>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-content">
+            <h4>Google Drive access</h4>
+            <p>SOPs, brand docs, contracts, spreadsheets &mdash; whatever you have across both businesses. The more we feed the brain, the smarter it gets.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-content">
+            <h4>Slack workspace invite</h4>
+            <p>So we can install Cynthia.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-content">
+            <h4>Download Claude Desktop</h4>
+            <p>We'll walk you through this &mdash; takes two minutes.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-content">
+            <h4>Any key docs</h4>
+            <p>Vendor agreements, distribution terms, Detoxing Co brand assets, Full Script info, whatever you want your AI to know about you and your world.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- SIGN OFF -->
+    <section class="fade-in">
+      <div class="section-label">One More Thing</div>
+      <h2>The ChatGPT &rarr; Claude switch</h2>
+      <p class="section-intro">I know you haven't made the transition yet. You won't have to force it.</p>
+
+      <p style="font-size: 13px; color: var(--text-muted);">Once your brain server is live and connected to Claude Desktop, it happens naturally. You'll open Claude, ask it something about a vendor contract or a Detoxing Co product question, and it'll just know. No re-explaining, no copy-pasting context. That's when the generic ChatGPT conversations start to feel pretty limited. It'll just click.</p>
+
+      <div class="sign-off">
+        <p>Looking forward to building this with you, Nicole. Charles wasn't kidding &mdash; there's a ton we can do here.</p>
+        <p style="margin-top: 16px;">Let's go.</p>
+        <p class="name">Joshua</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
