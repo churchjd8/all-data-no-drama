@@ -491,6 +491,11 @@
       <div class="code-block"><code><span class="code-dir">cynthia-agency-hub/</span>
 ├── CLAUDE.md                          <span class="code-comment"># agency-wide AI instructions</span>
 ├── .env.shared                        <span class="code-comment"># shared API keys</span>
+├── <span class="code-dir">cynthia-tools/</span>                     <span class="code-comment"># our proprietary tool suite</span>
+│   ├── <span class="code-dir">cynthia-meet/</span>                  <span class="code-comment"># meeting intelligence</span>
+│   ├── <span class="code-dir">cynthia-crm/</span>                   <span class="code-comment"># client relationship mgmt</span>
+│   ├── <span class="code-dir">cynthia-reach/</span>                 <span class="code-comment"># outreach automation</span>
+│   └── <span class="code-comment">...</span>                              <span class="code-comment"># future Cynthia products</span>
 ├── <span class="code-dir">memory/</span>
 │   ├── <span class="code-file">MEMORY.md</span>                      <span class="code-comment"># index</span>
 │   ├── <span class="code-file">voice_profile_joshua.md</span>        <span class="code-comment"># Joshua's writing voice</span>
@@ -520,23 +525,31 @@
           </thead>
           <tbody>
             <tr>
-              <td>Agency identity & voice profiles</td>
+              <td>Cynthia tools (Meet, CRM, Reach, etc.)</td>
               <td>Client-specific data</td>
             </tr>
             <tr>
-              <td>Process templates & playbooks</td>
+              <td>Agency identity & voice profiles</td>
               <td>Client credentials or API keys</td>
             </tr>
             <tr>
-              <td>Shared environment variables</td>
+              <td>Process templates & playbooks</td>
               <td>Client deliverables or content</td>
             </tr>
             <tr>
-              <td>Global learnings & feedback</td>
+              <td>Shared environment variables</td>
               <td>Anything a client shouldn't see</td>
+            </tr>
+            <tr>
+              <td>Global learnings & feedback</td>
+              <td></td>
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="callout">
+        <p>All Cynthia tools — Meet, CRM, Reach, and anything we build next — live in the hub. When a client server syncs, it gets the latest version of every tool automatically. Build once, deploy everywhere.</p>
       </div>
     </section>
 
