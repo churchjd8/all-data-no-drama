@@ -1,4 +1,4 @@
-# Cynthia AI — Hub & Spoke Server Architecture
+# ARK Partners — Hub & Spoke Server Architecture
 
 **For:** Joshua & Ricki
 **Date:** May 1, 2026
@@ -32,14 +32,14 @@ Think of it like a franchise model: the playbook lives at HQ, but each location 
 The hub is a single git repo — our agency's brain. It holds everything shared across clients.
 
 ```
-cynthia-agency-hub/
+ark-partners-hub/
 ├── CLAUDE.md                          # agency-wide AI instructions
-├── .env.shared                        # shared API keys (Anthropic, Cynthia, etc.)
-├── cynthia-tools/                     # our proprietary tool suite
-│   ├── cynthia-meet/                  # meeting intelligence
-│   ├── cynthia-crm/                   # client relationship management
-│   ├── cynthia-reach/                 # outreach automation
-│   └── ...                            # future Cynthia products
+├── .env.shared                        # shared API keys (Anthropic, ARK, etc.)
+├── ark-tools/                         # our proprietary tool suite
+│   ├── ark-meet/                      # meeting intelligence
+│   ├── ark-crm/                       # client relationship management
+│   ├── ark-reach/                     # outreach automation
+│   └── ...                            # future ARK products
 ├── memory/
 │   ├── MEMORY.md                      # index
 │   ├── voice_profile_joshua.md        # Joshua's writing voice
@@ -64,7 +64,7 @@ cynthia-agency-hub/
 ```
 
 **What lives here:**
-- Cynthia tools (Meet, CRM, Reach, and any future products)
+- ARK tools (Meet, CRM, Reach, and any future products)
 - Agency identity & voice profiles
 - Process templates & playbooks
 - Shared environment variables
@@ -133,7 +133,7 @@ When we sign a new client, one command kicks off the entire setup:
 
 4. **Scaffolds the client workspace** — creates the standard folder structure (`memory/`, `deliverables/`, `assets/`), drops in a starter `CLAUDE.md` with the client name, and creates placeholder memory files.
 
-5. **Copies shared .env values** — API keys for our tools (Anthropic, Cynthia platform, etc.) get pulled from the hub so we're not manually configuring every time.
+5. **Copies shared .env values** — API keys for our tools (Anthropic, ARK platform, etc.) get pulled from the hub so we're not manually configuring every time.
 
 **After the script runs:**
 - Either of us can open that server from any computer and start working immediately
@@ -190,7 +190,7 @@ No "can you send me that file?" No "which version is current?" The server IS the
 ```
                     ┌─────────────────────┐
                     │                     │
-                    │   CYNTHIA AGENCY    │
+                    │   ARK PARTNERS      │
                     │       HUB           │
                     │                     │
                     │  templates/         │

@@ -21,7 +21,7 @@
 **Human Intelligence** — The body, the edge, the inner work
 Connecting with your body and your soul on a deeper level. Wim Hof Method certified breathwork/ cold immersion instructor, certified yoga instructor, author of Cosmic Breadcrumbs. Learning to listen to the signal your body and soul are already sending, and dance with the Universe leaving you clues.
 
-**Artificial Intelligence** — Cynthia AI
+**Artificial Intelligence** — ARK Partners
 Human strategy meets AI firepower. Giving businesses the same superpower: an always-on intelligence that extends what humans can do and can help you reach your goals faster to live the life you came for.
 
 **Human Connection** — The community layer
@@ -55,7 +55,7 @@ What I discovered was that the work was never really about cold plunges. It was 
 
 I wrote a book about that entire journey. It's called **Cosmic Breadcrumbs: Building a Profitable Partnership with The Universe** — a story about what happens when you stop trying to control life and start collaborating with it. 
 
-These days, I'm building at the intersection of human intelligence and artificial intelligence. I co-founded **Cynthia AI**, an AI consulting agency where we pair human strategy with cutting-edge AI to help businesses work smarter, faster, and with more clarity. I believe AI is the most powerful tool of our generation — and that the humans who learn to work *with* it will build things we can't even imagine yet.
+These days, I'm building at the intersection of human intelligence and artificial intelligence. I co-founded **ARK Partners**, an AI consulting agency where we pair human strategy with cutting-edge AI to help businesses work smarter, faster, and with more clarity. I believe AI is the most powerful tool of our generation — and that the humans who learn to work *with* it will build things we can't even imagine yet.
 
 I host a podcast called **Find The Others** — where I share my own reflections from living life on purpose, and have conversations with people who are living on their own terms, following their own breadcrumbs, and building lives that look nothing like the template.
 
@@ -85,7 +85,7 @@ Three columns/cards, one per pillar. Each card has a title, one-liner, and the p
 | Human Intelligence | Artificial Intelligence | Human Connection |
 |---|---|---|
 | The body, the edge, the inner work | Human strategy meets AI | Community, conversation, gathering |
-| **Cosmic Breadcrumbs** — The book | **Cynthia AI** — The agency | **Coastal Tribe** — The community |
+| **Cosmic Breadcrumbs** — The book | **ARK Partners** — The agency | **Coastal Tribe** — The community |
 | **Edge Theory Labs** — Former co-founder | | **Find The Others** — The podcast |
 | | | **FTO WhatsApp Group** — The inner circle |
 
@@ -101,9 +101,9 @@ Optional: a single line underneath the cards that ties it together —
 - Photo-rich, storytelling-forward
 - This is the page people send to their friends when they say "you have to check out this guy"
 
-### Cynthia AI
+### ARK Partners
 - What it is, what we do, the team
-- Links out to cynthiaconcierge.com (or lives here until that's built)
+- Links out to www.arkpartners.ai (or lives here until that's built)
 - Positioning: Human Strategy. Artificial Intelligence. One Agency.
 
 ### Cosmic Breadcrumbs
